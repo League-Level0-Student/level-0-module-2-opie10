@@ -19,16 +19,19 @@ void playSound2(String s) {
   }
 }
 boolean finished= false;
+int[] ia = new int[4];
 int a=20 ;
 int z=20 ;
 int y=20 ;
 int x=20 ;
+
 void setup() {
   size(800, 200);
 }
+
 void draw() {
   //make it a nice color
-  fill(#FFA703);
+  fill(#90063B);
   noStroke();
   //if the mouse is pressed...
   background(#3A00FF);
@@ -55,67 +58,84 @@ void draw() {
 
     //Make your dot move really fast so that it can win the race
   }
-  if (finished){
-  if(x>y&&x>z){
-  fill(#EAEAEA);
-    ellipse(760, 25, 20, 20);
-    
-}if(x>y&&x<z){
-  fill(#C0C0C0);
-    ellipse(760, 25, 20, 20);}
-     if(a>y&&a>z){
-  fill(#EAEAEA);
-    ellipse(760, 75, 20, 20);
-    
-}if(a>y&&a<z){
-  fill(#C0C0C0);
-    ellipse(760, 75, 20, 20);}
-     if(z>y&&z>y){
-  fill(#EAEAEA);
-    ellipse(760, 125, 20, 20);
-    
-}if(z>y&&z<y){
-  fill(#C0C0C0);
-    ellipse(760, 125, 20, 20);}
-     if(y>x&&y>z){
-  fill(#EAEAEA);
-    ellipse(760, 25, 20, 20);
-    
-}if(y>x&&y<z){
-  fill(#C0C0C0);
-    ellipse(760, 25, 20, 20);}
-    
-  }
-  //(you have to figure out what part of your code to change)
-  //Use this method to play a ding when your dot crosses the finish line.
   if (x>800) {
     finished=true ;
-    fill(#E0BD0B);
-    ellipse(760, 25, 20, 20);
+
 
     playSound2("jeopardy.wav");
   }
   if (y>800)
   {
     finished = true;
-    fill(#E0BD0B);
-    ellipse(760, 125, 20, 20);
+
 
     playSound2("jeopardy.wav");
   }
   if (z>800)
   {
     finished=true;
-    fill(#E0BD0B);
-    ellipse(760, 175, 20, 20);
 
     playSound2("jeopardy.wav");
   }
   if (a>800) {
     finished=true ;
-    fill(#E0BD0B);
-    ellipse(760, 75, 20, 20);
+
 
     playSound2("jeopardy.wav");
   }
+
+  if (finished) {
+    ia[0]=x;
+    ia[1]=y;
+    ia[2]=z;
+    ia[3]=a;
+    ia=sort(ia);
+    println(ia);
+
+    if (ia[3]== x) {
+      fill(#EAC118);
+      ellipse(700, 25, 20, 20);
+    } else if (ia[3]== y) {
+      fill(#EAC118);
+      ellipse(700, 125, 20, 20);
+    } else if (ia[3]== z) {
+      fill(#EAC118);
+      ellipse(700, 175, 20, 20);
+    } else if (ia[3]== a ){
+      fill(#EAC118);
+      ellipse(700, 75, 20, 20);
+    }
+    if (ia[2]== x) {
+      fill(#D3D2CD);
+      ellipse(700, 25, 20, 20);
+    } else if (ia[2]== y) {
+      fill(#D3D2CD);
+      ellipse(700, 125, 20, 20);
+    } else if (ia[2]== z ){
+      fill(#D3D2CD);
+      ellipse(700, 175, 20, 20);
+    } else if (ia[2]== a) {
+      fill(#D3D2CD);
+      ellipse(700, 75, 20, 20);
+    }
+    if (ia[1]== x ){
+      fill(#DB7B04);
+      ellipse(700, 25, 20, 20);
+    } else if (ia[1]== y) {
+      fill(#DB7B04);
+      ellipse(700, 125, 20, 20);
+    } else if (ia[1]== z ){
+      fill(#DB7B04);
+      ellipse(700, 175, 20, 20);
+    } else if (ia[1]== a) {
+      fill(#DB7B04);
+      ellipse(700, 75, 20, 20);
+    }
+  }
+  
 }
+
+
+
+  //(you have to figure out what part of your code to change)
+  //Use this method to play a ding when your dot crosses the finish line.
